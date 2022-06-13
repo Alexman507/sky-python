@@ -13,7 +13,7 @@ def page_all_candidates():
     names = [name['name'] for name in load_]
     id_ = [pk['id'] for pk in load_]
     dict_ = dict(zip(names, id_))
-    global dict_
+
     return render_template('list.html', names=names, dict_=dict_)
 
 
@@ -31,20 +31,33 @@ def page_candidates_by_pk(x):
 
 
 @app.route('/search/<candidate_name>')
-def page_candidates_by_name(name):
-    candidates = utils.get_candidates_by_name(name)
+def page_candidates_by_name(candidate_name):
+    """Поиск кандидата по имени"""
+    load_ = utils.load_candidates_from_json()
+    names = [name['name'] for name in load_]
+    id_ = [pk['id'] for pk in load_]
+    dict_ = dict(zip(names, id_))
+    candidates = utils.get_candidates_by_name(candidate_name)
     if len(candidates) == 0:
         return "Нет таких кандидатов"
-    html_code = render_template('search.html', name=name, len_=len(candidates), dict_=dict_)
+    names_ = [name['name'] for name in candidates]
+    html_code = render_template('search.html', names=names_, len_=len(candidates), dict_=dict_)
     return html_code
 
 
 @app.route('/skill/<skill>')
-def page_candidates_by_name(name):
-    candidates = utils.get_candidates_by_name(name)
+def page_candidates_by_skills(skill):
+    """Поиск кандидатов по навыкам"""
+    load_ = utils.load_candidates_from_json()
+    names = [name['name'] for name in load_]
+    id_ = [pk['id'] for pk in load_]
+    dict_ = dict(zip(names, id_))
+    candidates = utils.get_candidates_by_skill(skill)
     if len(candidates) == 0:
         return "Нет таких кандидатов"
-    html_code = render_template('search.html', name=name, len_=len(candidates), dict_=dict_)
+    names_ = [name['name'] for name in candidates]
+
+    html_code = render_template('skill.html', skill=skill, names=names_, len_=len(candidates), dict_=dict_)
     return html_code
 
 
