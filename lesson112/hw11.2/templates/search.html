@@ -1,0 +1,4 @@
+<h1>Найдено кандидатов {{ len_ }}</h1>
+{% for name in names %}
+<p><a href="/candidate/<{{ dict_[name] }}>">{{ name }}</a></p>
+{% endfor %}
