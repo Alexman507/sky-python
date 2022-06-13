@@ -23,7 +23,7 @@ def get_candidates_by_name(candidate_name):
     count_of_candidates = []
     candidates = load_candidates_from_json()
     for candidate in candidates:
-        if candidate_name in candidate["name"]:
+        if candidate_name in candidate["name"].lower():
             count_of_candidates.append(candidate)
     return count_of_candidates
 
