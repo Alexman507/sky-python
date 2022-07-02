@@ -1,2 +1,2 @@
-DATA_PATH = "data.json"
-COMMENTS_PATH = "comments.json"
+DATA_PATH = "data/data.json"
+COMMENTS_PATH = "data/comments.json"

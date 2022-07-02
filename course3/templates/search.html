@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SKYPROGRAM search</title>
-  <link href="css/styles.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/styles.min.css' )}}" rel="stylesheet">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
       <form action="/" class="search__form">
         <input type="search" class="search__input">
       </form>
-      <p class="search__results">Найдено постов: 11</p>
+      <p class="search__results">Найдено постов: {{ posts | length }}</p>
     </div>
     <section class="items">
       <div class="items__item item">
@@ -37,7 +37,7 @@
             <div class="item__ava-wrap">
               <img src="img/ava1.png" alt="" class="item__ava" width="47">
             </div>
-            <span class="item__username">skypro.08</span>
+            <span class="item__username">{{posts.poster_name}}</span>
           </a>
         </div>
         <a href="/post.html" class="item__post-link">
@@ -53,17 +53,18 @@
         <div class="item__post-bottom">
           <a href="/post.html" class="item__btn-more">Подробнее</a>
           <button type="button" class="item__bookmark-btn">
-            <img src="img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
+            <img src="{{ url_for('static', filename='img/bookmark.png' )}}" alt="" class="item__bookmark-icon" width="24">
           </button>
         </div>
       </div>
+      {% for post in posts %}
       <div class="items__item item">
         <div class="item__top">
           <a href="/user-feed.html" class="item__head">
             <div class="item__ava-wrap">
-              <img src="img/ava2.png" alt="" class="item__ava" width="47">
+              <img src="{{ post.pic }}" alt="" class="item__ava" width="47">
             </div>
-            <span class="item__username">Username</span>
+            <span class="item__username">{{ post.poster_name }}</span>
           </a>
         </div>
         <a href="/post.html" class="item__post-link">
@@ -72,43 +73,18 @@
         <p class="item__descr"><a href="/tag.html" class="item__tag">#food</a> Текст описания коротки...</p>
         <div class="item__post-info">
           <div class="item__counter">
-            <img src="img/eye.png" alt="" class="item__counter-icon" width="26">
-            <span class="item__counter-text">1023</span>
+            <img src="{{ url_for('static', filename='img/eye.png' )}}" alt="" class="item__counter-icon" width="26">
+            <span class="item__counter-text">{{post.views_count}}</span>
           </div>
         </div>
         <div class="item__post-bottom">
           <a href="/post.html" class="item__btn-more">Подробнее</a>
           <button type="button" class="item__bookmark-btn active">
-            <img src="img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
+            <img src="{{ url_for('static', filename='img/bookmark.png' )}}" alt="" class="item__bookmark-icon" width="24">
           </button>
         </div>
       </div>
-      <div class="items__item item">
-        <div class="item__top">
-          <a href="/user-feed.html" class="item__head">
-            <div class="item__ava-wrap">
-              <img src="img/ava2.png" alt="" class="item__ava" width="47">
-            </div>
-            <span class="item__username">Username</span>
-          </a>
-        </div>
-        <a href="/post.html" class="item__post-link">
-          <img src="img/post7.jpg" alt="" width="348" class="item__post-img">
-        </a>
-        <p class="item__descr"><a href="/tag.html" class="item__tag">#food</a> Текст описания коротки...</p>
-        <div class="item__post-info">
-          <div class="item__counter">
-            <img src="img/eye.png" alt="" class="item__counter-icon" width="26">
-            <span class="item__counter-text">1023</span>
-          </div>
-        </div>
-        <div class="item__post-bottom">
-          <a href="/post.html" class="item__btn-more">Подробнее</a>
-          <button type="button" class="item__bookmark-btn">
-            <img src="img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
-          </button>
-        </div>
-      </div>
+      {% endfor %}
     </section>
   </main>
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
