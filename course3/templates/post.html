@@ -37,7 +37,7 @@
             <img src="{{ url_for('static', filename='img/bookmark.png') }}" alt="" class="item__bookmark-icon" width="24">
           </button>
         </div>
-        <a href="" class="item__post-link">
+        <a href="/posts/{{ post.pk }}" class="item__post-link">
           <img src="{{ post.pic }}" alt="" width="348" class="item__post-img">
         </a>
         <div class="item__descr">

@@ -1,6 +1,7 @@
 from flask import Flask
 
-from course3.bp_api.views import blueprint_api, bp_posts
+from course3.bp_api.views import blueprint_api
+from course3.bp_posts.views import bp_posts
 from course3.exceptions.data_exceptions import DataSourceError
 
 

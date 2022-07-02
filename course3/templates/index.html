@@ -23,6 +23,11 @@
     </div>
   </header>
   <main class="container">
+    <div class="search">
+      <form action="/search" class="search__form">
+        <input type="search" class="search__input" name="s" value="{{ search }}" placeholder="Поиск">
+      </form>
+    </div>
     <section class="items">
       {% for post in posts %}
       <div class="items__item item">
@@ -34,10 +39,10 @@
             <span class="item__username">{{ post.poster_name }}</span>
           </a>
         </div>
-        <a href="/posts/ {{ post.pk }}" class="item__post-link">
+        <a href="/posts/{{ post.pk }}" class="item__post-link">
           <img src="{{ post.pic }}" alt="" width="348" class="item__post-img">
         </a>
-        <p class="item__descr">{{ post.content }}</p>
+        <p class="item__descr">{{ post.content | truncate(50) }}</p>
         <div class="item__post-info">
           <div class="item__counter">
             <img src="{{url_for('static', filename='img/eye.png')}}" alt="" class="item__counter-icon" width="26">
