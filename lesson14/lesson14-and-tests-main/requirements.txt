@@ -1,0 +1,10 @@
+blessings==1.7
+colour-runner==0.1.1
+flake8==3.9.2
+mccabe==0.6.1
+prettytable==2.2.1
+pycodestyle==2.7.0
+pyflakes==2.3.1
+Pygments==2.10.0
+six==1.16.0
+wcwidth==0.2.5
