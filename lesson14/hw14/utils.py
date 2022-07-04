@@ -1,5 +1,5 @@
 import sqlite3
-
+# 28:15
 
 def get_value_from_db(sql_response):
     with sqlite3.connect("../netflix.db") as connection:
