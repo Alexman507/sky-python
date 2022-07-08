@@ -1,0 +1,54 @@
+select *
+from netflix
+
+select *
+from netflix
+where title = '#Roxy'
+and release_year =
+(select max(release_year)
+ from netflix
+ where title = '#Roxy')
+
+
+select max(release_year)
+from netflix
+where title = '#Roxy'
+
+select *
+from netflix
+where title = '#Roxy'
+order by release_year desc
+limit 1
+
+select title, release_year
+from netflix
+where release_year between '2021' and '2022'
+limit 100
+
+select title, release_year
+from netflix
+where release_year >= '2021' and release_year <= '2022'
+limit 100
+
+select title, rating, description
+from netflix
+where rating = 'G'
+
+
+SELECT *
+FROM netflix
+WHERE listed_in like '%Dramas'
+ORDER BY release_year DESC
+LIMIT 10
+
+
+select `cast`
+from netflix
+where `cast` like '%Rose McIver%'
+and `cast` like '%Ben Lamb%'
+
+select title, description, listed_in
+from netflix
+where type = '%Movie'
+and release_year = '2021'
+and listed_in like '%Documentaries'
