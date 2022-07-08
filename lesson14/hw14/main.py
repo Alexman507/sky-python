@@ -61,8 +61,8 @@ def search_genre_view(genre: str):
 
 
 if __name__ == "__main__":
-    #
-    #
+    # print(utils.get_band_cast('Rose McIver', 'Ben Lamb'))
+    # print(utils.get_title_description_by_type_year_genre('Movie', '2021', 'Documentaries'))
 
     app.run(
         host="0.0.0.0",

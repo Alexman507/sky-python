@@ -2,13 +2,13 @@ import json
 import sqlite3
 
 
-def get_value_from_db(sql_response: str) -> list[dict]:
+def get_value_from_db(sql):
     """Загрузка данных из netflix.db"""
 
-    with sqlite3.connect("../netflix.db") as connection:
+    with sqlite3.connect("../hw14/netflix.db") as connection:
         connection.row_factory = sqlite3.Row
 
-        result = connection.execute(sql_response).fetchall()
+        result = connection.execute(sql).fetchall()
 
         return result
 
@@ -87,7 +87,7 @@ def search_genre(genre: str) -> list[dict]:
     return result
 
 
-def get_band_cast(actor1: str, actor2: str) -> list[dict]:
+def get_band_cast(actor1: str, actor2: str) -> list[str]:
     """
     Принимает имена 2‑х актеров, возвращает тех актеров,
     которые играли с ними больше 2‑х раз
@@ -103,11 +103,11 @@ def get_band_cast(actor1: str, actor2: str) -> list[dict]:
     result = []
 
     names_dict = {}
-    for item in get_value_from_db(sql):
-        names = set(dict(item).get('cast').spit(",")) - {actor1, actor2}
+    for item in get_value_from_db(sql=sql):
+        names = set(dict(item).get('cast').split(",")) - set([actor1, actor2])
 
         for name in names:
-            names_dict[str(name).strip()] += names_dict.get(str(name).strip(), 0) + 1
+            names_dict[str(name).strip()] = names_dict.get(str(name).strip(), 0) + 1
 
     for key, value in names_dict.items():
         if value >= 2:
@@ -116,15 +116,15 @@ def get_band_cast(actor1: str, actor2: str) -> list[dict]:
     return result
 
 
-def get_title_description_by_type_year_genre(type_: str, year: int, genre: str) -> str:
+def get_title_description_by_type_year_genre(type_: str, year: str, genre: str):
     """Принимает тип, год жанр; возвращает названия с описанием"""
 
     sql = f"""
     select title, description, listed_in
     from netflix
-    where type = '%{type_}'
+    where type = '{type_}'
     and release_year = '{year}'
-    and listed_in like '%{genre}'
+    and listed_in like '%{genre}%'
     """
 
     result = []
