@@ -1,0 +1,12 @@
+[flake8]
+ignore =
+    W503,
+    F811
+exclude =
+    ./ttools/*,
+    ./venv/*
+per-file-ignores =
+    ./part2/post_with_db/main.py:E501,
+    ./part2/put_patch_delete_with_db/solution.py:E501
+max-complexity = 10
+max-line-length = 79
