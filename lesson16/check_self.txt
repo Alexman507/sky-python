@@ -1,0 +1,23 @@
+# Какой драйвер использовать для PostgreSQL?
+psycopg2
+# Как соединиться с SQLite БД в файле?
+'sqlite:////tmp/test.db'
+# Как соединиться с SQLite в памяти?
+'sqlite:///:memory:'
+# Как описать колонку типа String? А Integer?
+db.Column(db.String)
+db.Column(db.Integer)
+# Как создать сессию?
+Ее не надо создавать ее можно получить из объекта db
+db.session
+# Как создать двух пользователей?
+john = User(id=2, name="John", age=30)
+kate = User(id=1, name="Kate", age=28)
+#db.session.add_all([john, kate])
+db.session.add(john)
+db.session.add(kate)
+db.session.commit()
+# Как выбрать всех пользователей из таблицы?
+User.query.all()
+# Как выбрать одного пользователя?
+User.query.get(1)
