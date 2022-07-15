@@ -5,7 +5,7 @@ CREATE_TABLE = ("CREATE TABLE guide ("
                 "tours_count integer, "
                 "bio varchar(300),"
                 "is_pro boolean,"
-                "company ingeger)")
+                "company integer)")
 INSERT_VALUES = (
     "INSERT INTO guide"
     "('surname', 'full_name', 'tours_count', 'bio', 'is_pro', 'company') VALUES "
