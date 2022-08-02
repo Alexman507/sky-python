@@ -1,5 +1,5 @@
 import json
-
+# timecode 1:06:26
 from config import app
 from lesson16.hw16.models import Order, User, Offer
 from lesson16.hw16.service import init_db, get_all, get_by_id
