@@ -32,8 +32,8 @@ class Order(db.Model):
     end_date = db.Column(db.Integer)
     address = db.Column(db.String(100))
     price = db.Column(db.Integer)
-    customer_id = db.Column(db.Integer, db.ForeignKey(f'{User.__tablename__}'))
-    executor_id = db.Column(db.Integer, db.ForeignKey(f'{User.__tablename__}'))
+    customer_id = db.Column(db.Integer, db.ForeignKey(f'{User.__tablename__}.id'))
+    executor_id = db.Column(db.Integer, db.ForeignKey(f'{User.__tablename__}.id'))
 
     def to_dict(self):
         return {
@@ -52,8 +52,8 @@ class Order(db.Model):
 class Offer(db.Model):
     __tablename__ = 'offer'
     id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey(f'{Order.__tablename__}'))
-    executor_id = db.Column(db.Integer, db.ForeignKey(f'{User.__tablename__}'))
+    order_id = db.Column(db.Integer, db.ForeignKey(f'{Order.__tablename__}.id'))
+    executor_id = db.Column(db.Integer, db.ForeignKey(f'{User.__tablename__}.id'))
 
     def to_dict(self):
         return {
