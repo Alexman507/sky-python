@@ -64,7 +64,18 @@ def get_all(model):
 def get_by_id(model, id_):
     """Возвращает данные по полю id, такой способ для не перегруженной датабазы"""
     try:
-        return db.session.query(model).filter(User.id == id_).all()[0].to_dict()
+        return db.session.query(model).get(id_).to_dict()
+    except Exception:
+        return {}
+
+
+def get_all_union(model, model2, user_id):
+    try:
+
+        data = db.session.query(model, model2).join(model2).filter(model.id == user_id).all()[0]
+        result = data[0].to_dict()
+        result.update(data[1].to_dict)
+        return result
     except Exception:
         return {}
 
