@@ -69,6 +69,12 @@ def get_by_id(model, id_):
         return {}
 
 
+def get_all_union(model, model2, user_id):
+    try:
+        return db.session.query(model).get(user_id).to_dict()
+    except Exception:
+        return {}
+
 def init_db():
     db.drop_all()
     db.create_all()
