@@ -14,3 +14,15 @@
 #         response=json.dumps({}, indent=4),
 #         status=200,
 #         mimetype="application/json"
+
+# def update_universal(model, user_id, values):
+#    try:
+#
+#        data = db.session.query(model).get(user_id)
+#        data.id = values.get('id')
+#        data.first_name = values.get('first_name')
+#        data.last_name = values.get('last_name')
+
+#        db.session.commit()
+#    except Exception:
+#        return {}

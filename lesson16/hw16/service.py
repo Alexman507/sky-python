@@ -80,6 +80,28 @@ def get_all_union(model, model2, user_id):
         return {}
 
 
+def update_universal(model, user_id, values):
+    try:
+
+        db.session.query(model).filter(user_id == model.id).update(values)
+
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return {}
+
+
+def delete_universal(model, user_id):
+    try:
+
+        db.session.query(model).filter(user_id == model.id).delete()
+
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return {}
+
+
 def init_db():
     db.drop_all()
     db.create_all()
