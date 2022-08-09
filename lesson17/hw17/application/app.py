@@ -14,7 +14,7 @@ def create_app():
 
     with app.app_context():
 
-        api = Api(app, version='1.0', description='Movies API')
+        api = Api(app, version='1.0', description='Movies API', doc='/docs', prefix='/api')
         app.config['api'] = api
 
         from lesson17.hw17.application import routes
