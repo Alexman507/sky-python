@@ -20,9 +20,3 @@ def create_app():
         from lesson17.hw17.application import routes
 
         return app
-
-
-
-
-
-
